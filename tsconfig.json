@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "allowJs": true,
+    "module": "commonjs",
+    "baseUrl": ".",
+    "lib": [
+      "es2017",
+      "es7",
+      "es6",
+      "dom"
+    ],
+    "declaration": true,
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "paths": {
+      "@sahaz/auto-fill": [
+        "./core"
+      ],
+      "puppeteer": [
+        "./node_modules/puppeteer/lib/cjs/puppeteer/api-docs-entry"
+      ]
+    }
+  }
+}

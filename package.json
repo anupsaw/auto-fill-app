@@ -1,0 +1,29 @@
+{
+  "name": "@sahaz/auto-fill-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node -r tsconfig-paths/register index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anupsaw/auto-fill-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anupsaw/auto-fill-app/issues"
+  },
+  "homepage": "https://github.com/anupsaw/auto-fill-app#readme",
+  "dependencies": {
+    "puppeteer": "^5.2.1",
+    "puppeteer-core": "^5.2.1",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^3.0.1",
+    "ts-node": "^8.10.2",
+    "tsconfig-paths": "^3.9.0"
+  }
+}
