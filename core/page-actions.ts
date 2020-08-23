@@ -13,10 +13,6 @@ export class SzPageAction {
 
     }
 
-    public async selectOption(): Promise<void> {
-
-    }
-
     private async createSelector(text?: string, ...type: string[]): Promise<string> {
         return type.reduce((prevSelector: string, curVal: string) => {
             const curSelector = `//${curVal}[contains(.,"${text}")]`;
@@ -32,7 +28,9 @@ export class SzPageAction {
     }
 
     private async scrollToView(ele: ElementHandle): Promise<any> {
-        await ele.evaluate((node: HTMLElement) => node.scrollIntoView({ behavior: this.settings.scrollBehavior, block: this.settings.scrollTo }));
+        await ele.evaluate((node: HTMLElement, settings: any) => {
+            node.scrollIntoView({ behavior: settings.scrollBehavior, block: settings.scrollTo })
+        }, this.settings as any);
         return this.page.waitFor(this.settings.scrollWait);
     }
 
@@ -42,5 +40,31 @@ export class SzPageAction {
         const element = await this.page.$(`#${id}`);
         await this.scrollToView(element);
         return element;
+    }
+
+    private async captureButton(btnLabel: string): Promise<ElementHandle> {
+        const btnSelector = await this.createSelector(btnLabel, SzSelectorType.BUTTON);
+        const btnEle = await this.page.waitForXPath(btnSelector);
+        await this.scrollToView(btnEle);
+        return btnEle;
+    }
+
+    public async inputText(labelText: string, value: string): Promise<any> {
+        const element = await this.captureElementByLabel(labelText);
+        await element.type(value);
+    }
+
+    public async selectOption(labelText: string, value: string): Promise<any> {
+        const element = await this.captureElementByLabel(labelText);
+        const optionValue = await element.$$eval('option', (opt: HTMLOptionElement[], optVal: string) => {
+            const option = opt.find(item => item.innerText.trim() === optVal);
+            return option.value;
+        }, value);
+        await element.select(optionValue);
+    }
+
+    public async clickButton(labelText: string): Promise<any> {
+        const buttonEle = await this.captureButton(labelText);
+        buttonEle.click();
     }
 }

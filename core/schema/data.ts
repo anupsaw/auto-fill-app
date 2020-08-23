@@ -22,5 +22,6 @@ export class SzFormDataType {
     name: string;
     value: string;
     waitFor: number;
-    type: SzInputType
+    type: SzInputType;
+    skip?: boolean;
 }

@@ -1,6 +1,6 @@
 import * as os from 'os';
 import puppeteer from 'puppeteer/lib/cjs/puppeteer';
-import { Page, Browser } from 'puppeteer';
+import { Page, Browser, LaunchOptions } from 'puppeteer';
 
 export class SzPageLauncher {
 
