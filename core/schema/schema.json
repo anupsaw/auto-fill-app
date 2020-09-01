@@ -112,7 +112,8 @@
                                     "radio",
                                     "checkbox",
                                     "button",
-                                    "link"
+                                    "link",
+                                    "submit"
                                 ],
                                 "examples": [
                                     "goto"

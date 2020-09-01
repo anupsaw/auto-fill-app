@@ -4,7 +4,7 @@ import { Page, Browser, LaunchOptions } from 'puppeteer';
 
 export class SzPageLauncher {
 
-    public browser: Browser;
+    public browser: any;
     public page: Page;
     public static async launch(options: any): Promise<SzPageLauncher> {
         const self = new SzPageLauncher();
@@ -28,7 +28,7 @@ export class SzPageLauncher {
     }
 
     private async setPageConfig(page: Page): Promise<void> {
-        await page.addStyleTag({ content: '*{scroll-behavior: smooth !important}' });
+       // await page.addStyleTag({ content: '*{scroll-behavior: smooth !important}' });
     }
     private getTargetExecutablePath(): string {
         const targetOs = os.platform();

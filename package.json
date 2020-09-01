@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node -r tsconfig-paths/register index.ts"
+    "start": "ts-node -r tsconfig-paths/register index.ts",
+    "build:prod": "npm run compile && npm run packaging",
+    "compile": "node_modules/.bin/tsc -p tsconfig.json",
+    "packaging": "node_modules/.bin/pkg dist/index.js --output build/auto-fill.exe"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
   "devDependencies": {
     "@types/puppeteer": "^3.0.1",
     "ts-node": "^8.10.2",
-    "tsconfig-paths": "^3.9.0"
+    "tsconfig-paths": "^3.9.0",
+    "pkg": "^4.4.9"
   }
 }

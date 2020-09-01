@@ -4,14 +4,13 @@ import { SzPageSetting } from "./settings/settings";
 
 export class SzPageAction {
 
+    private checkboxLookup: number;
+
 
     constructor(
         private readonly page: Page,
         private readonly settings: SzPageSetting = new SzPageSetting()
     ) { }
-    public async selectOption1(): Promise<void> {
-
-    }
 
     private async createSelector(text?: string, ...type: string[]): Promise<string> {
         return type.reduce((prevSelector: string, curVal: string) => {
@@ -42,6 +41,16 @@ export class SzPageAction {
         return element;
     }
 
+    public async captureCheckbox(labelText: string): Promise<ElementHandle> {
+        const selector = await this.createSelector(labelText, SzSelectorType.LABEL)
+        const checkboxSelector = `${selector}//input|${selector}/..//input`;
+        const checkboxElement = (await this.page.waitForXPath(checkboxSelector)).asElement();
+        await this.scrollToView(checkboxElement);
+
+        checkboxElement.evaluate((dom: any, a: string) => console.log('checkbox dom', dom, a), checkboxSelector)
+        return checkboxElement;
+    }
+
     private async captureButton(btnLabel: string): Promise<ElementHandle> {
         const btnSelector = await this.createSelector(btnLabel, SzSelectorType.BUTTON);
         const btnEle = await this.page.waitForXPath(btnSelector);
@@ -49,7 +58,14 @@ export class SzPageAction {
         return btnEle;
     }
 
+    /** All Public page action methods */
+
     public async inputText(labelText: string, value: string): Promise<any> {
+        const element = await this.captureElementByLabel(labelText);
+        await element.type(value);
+    }
+
+    public async inputTextArea(labelText: string, value: string): Promise<any> {
         const element = await this.captureElementByLabel(labelText);
         await element.type(value);
     }
@@ -66,5 +82,26 @@ export class SzPageAction {
     public async clickButton(labelText: string): Promise<any> {
         const buttonEle = await this.captureButton(labelText);
         buttonEle.click();
+    }
+
+    public async clickSubmit(labelText: string): Promise<any> {
+        const submitSelector = `//input[@type="submit"][@value="${labelText}"]`
+        const submitElement = (await this.page.waitForXPath(submitSelector)).asElement();
+        await this.scrollToView(submitElement);
+        await submitElement.click();
+    }
+
+    public async checkboxCheck(labelText: string): Promise<any> {
+        // const checkboxElement = await this.captureCheckbox(labelText);
+
+        // await checkboxElement.click();
+
+        const checkboxLabelElement = await this.captureLabelElement(labelText);
+        await checkboxLabelElement.click();
+    }
+
+    public async selectRadio(labelText: string, value: string): Promise<any> {
+        const radioElement = await this.captureLabelElement(labelText);
+        await radioElement.click();
     }
 }

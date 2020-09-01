@@ -1,0 +1,32 @@
+{
+    "$schema": "../core/schema/schema.json",
+    "goto": "https://www.getharvest.com/signup",
+    "data": [
+        {
+            "name": "First Name",
+            "value": "Anup",
+            "type": "input",
+            "waitFor": 0
+        },
+        {
+            "name": "Last Name",
+            "value": "Saw",
+            "type": "input"
+        },
+        {
+            "name": "Company Name",
+            "value": "Automation",
+            "type": "input"
+        },
+        {
+            "name": "Work Email",
+            "value": "test@t.com",
+            "type": "input"
+        },
+        {
+            "name": "Create My Account",
+            "value": "",
+            "type": "submit"
+        }
+    ]
+}

@@ -30,6 +30,8 @@ export class SzProcessPageData {
                         case SzInputType.INPUT: await this.pageAction.inputText(item.name, item.value); break;
                         case SzInputType.BUTTON: await this.pageAction.clickButton(item.name); break;
                         case SzInputType.SELECT: await this.pageAction.selectOption(item.name, item.value); break;
+                        case SzInputType.CHECKBOX: await this.pageAction.checkboxCheck(item.name); break;
+                        case SzInputType.SUBMIT: await this.pageAction.clickSubmit(item.name); break;
                     }
                     return Promise.resolve();
                 } catch (error) {
@@ -44,10 +46,5 @@ export class SzProcessPageData {
 
 
 
-    }
-
-    public async processInputData(item: SzFormDataType): Promise<void> {
-        console.log(item);
-        console.log('process')
     }
 }

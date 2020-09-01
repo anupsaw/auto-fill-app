@@ -1,5 +1,5 @@
 export class SzLoggingSetting {
-    backup: boolean = true;
+    backup: boolean = false;
     backupFolder: string = 'backup';
     logFolder: string = 'log';
 }
@@ -10,7 +10,6 @@ export class SzPageSetting {
     scrollTo: ScrollLogicalPosition = 'center';
     /** allow to finish the scroll */
     scrollWait: number = 150;
-    backupLog: boolean = true;
     log: SzLoggingSetting = new SzLoggingSetting();
 }
 

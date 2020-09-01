@@ -30,14 +30,15 @@ export class SzLogUtil {
             const backupCount = fs.readdirSync(`${backupFolder}/${curDateFolder}`).length;
             const backupFolderLoc = `${backupFolder}/${curDateFolder}/${backupCount + 1}`;
             fs.mkdirSync(backupFolderLoc);
+
             const files = fs.readdirSync(logFolder);
 
             files.forEach((file: any) => {
                 fs.copyFileSync(`${logFolder}/${file}`, `${backupFolderLoc}/${file}`);
                 fs.unlinkSync(`${logFolder}/${file}`);
-            })
+            });
         } else {
-            fs.mkdirSync(logFolder);
+            !fs.existsSync(logFolder) && fs.mkdirSync(logFolder);
         }
     }
 

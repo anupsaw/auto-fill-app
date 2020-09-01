@@ -1,0 +1,37 @@
+{
+    "$schema": "../core/schema/schema.json",
+    "goto": "https://admin.formstack.com/signup/formstack_classic/gold?referring_type=s-sol-online-forms-ppc",
+    "data": [
+        {
+            "name": "First Name",
+            "value": "Anup",
+            "type": "input",
+            "waitFor": 0
+        },
+        {
+            "name": "Last Name",
+            "value": "Saw",
+            "type": "input"
+        },
+        {
+            "name": "Work Email",
+            "value": "test@t.com",
+            "type": "input"
+        },
+        {
+            "name": "Organization Name",
+            "value": "My Automation script",
+            "type": "input"
+        },
+        {
+            "name": "I understand and agree to the Terms & Conditions, Privacy Policy, and Acceptable Use Policy.",
+            "value": "",
+            "type": "checkbox"
+        },
+        {
+            "name": "Start Trial",
+            "value": "My Automation script",
+            "type": "button"
+        }
+    ]
+}

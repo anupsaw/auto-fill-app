@@ -1,6 +1,6 @@
 {
     "$schema": "../core/schema/schema.json",
-    "goto": "https://www.getharvest.com/signup",
+    "goto": "https://formsmarts.com/form/df1?mode=h5",
     "data": [
         {
             "name": "First Name",
@@ -14,19 +14,36 @@
             "type": "input"
         },
         {
-            "name": "Company Name",
-            "value": "Automation",
-            "type": "input"
-        },
-        {
-            "name": "Work Email",
+            "name": "Email",
             "value": "test@t.com",
             "type": "input"
         },
         {
-            "name": "Create My Account",
-            "value": "",
-            "type": "button"
+            "name": "Shipping Address",
+            "value": "100 Street Address",
+            "type": "input"
+        },
+        {
+            "name": "Country",
+            "value": "India",
+            "type": "select"
+        },
+        {
+            "name": "Product 1",
+            "value": "My Automation script",
+            "type": "checkbox"
         }
+        ,
+        {
+            "name": "Product 2",
+            "value": "My Automation script",
+            "type": "checkbox"
+        },
+        {
+            "name": "Product 2 Quantity",
+            "value": "3453543",
+            "type": "input"
+        }
+
     ]
 }

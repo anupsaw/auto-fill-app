@@ -5,7 +5,8 @@ export enum SzInputType {
     CHECKBOX = 'checkbox',
     TEXTAREA = 'textarea',
     BUTTON = 'button',
-    LINK = 'link'
+    LINK = 'link',
+    SUBMIT = 'submit'
 }
 
 export class SzDataType {
